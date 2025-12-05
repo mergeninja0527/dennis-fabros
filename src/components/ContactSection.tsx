@@ -22,31 +22,9 @@ const ContactSection = () => {
   };
 
   const socialLinks = [
-    { icon: Mail, label: "Email", href: "mailto:hello@dennisfabros.dev" },
-    { icon: Github, label: "GitHub", href: "https://github.com" },
-    { icon: CodePenIcon, label: "CodePen", href: "https://codepen.io" },
+    { icon: Mail, label: "Email", href: "mailto:merge.ninja@mynes.com" },
+    { icon: Github, label: "GitHub", href: "https://github.com/mergeninja0527" },
   ];
-
-  // Custom CodePen icon component
-  function CodePenIcon({ className }: { className?: string }) {
-    return (
-      <svg
-        className={className}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2" />
-        <line x1="12" y1="22" x2="12" y2="15.5" />
-        <polyline points="22 8.5 12 15.5 2 8.5" />
-        <polyline points="2 15.5 12 8.5 22 15.5" />
-        <line x1="12" y1="2" x2="12" y2="8.5" />
-      </svg>
-    );
-  }
 
   return (
     <section id="contact" className="py-32 bg-foreground text-primary-foreground relative overflow-hidden">
