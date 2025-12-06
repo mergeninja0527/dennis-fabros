@@ -16,8 +16,6 @@ const AboutSection = () => {
   return (
     <section id="about" className="py-32 bg-background relative overflow-hidden">
       {/* Geometric accents */}
-      <div className="absolute top-20 right-12 w-24 h-24 border border-border" />
-      <div className="absolute bottom-32 left-8 w-16 h-16 bg-muted" />
 
       <div className="section-padding max-w-7xl mx-auto" ref={ref}>
         <motion.div
