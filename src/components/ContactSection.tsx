@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Mail, Github, ArrowUpRight } from "lucide-react";
+import { Mail, Github, Send, ArrowUpRight } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 
 const ContactSection = () => {
@@ -11,19 +11,94 @@ const ContactSection = () => {
     email: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Message Sent",
-      description: "Thank you for reaching out. I'll get back to you soon!",
-    });
-    setFormData({ name: "", email: "", message: "" });
+    setIsSubmitting(true);
+
+    try {
+      // Using Web3Forms - simpler alternative that works immediately
+      // Get your access key from https://web3forms.com (it's free)
+      const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "YOUR_ACCESS_KEY_HERE";
+      
+      // If access key is not set, use EmailJS as fallback
+      if (accessKey === "YOUR_ACCESS_KEY_HERE") {
+        // Try EmailJS if configured
+        const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+        const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+        const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+        if (serviceId && templateId && publicKey) {
+          // Dynamic import for EmailJS
+          const emailjs = (await import("@emailjs/browser")).default;
+          await emailjs.send(
+            serviceId,
+            templateId,
+            {
+              from_name: formData.name,
+              from_email: formData.email,
+              message: formData.message,
+              to_email: "codebug0527@gmail.com",
+            },
+            publicKey
+          );
+        } else {
+          throw new Error("Email service not configured. Please set up Web3Forms or EmailJS.");
+        }
+      } else {
+        // Use Web3Forms
+        const response = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            access_key: accessKey,
+            name: formData.name,
+            email: formData.email,
+            message: formData.message,
+            subject: `Contact Form Message from ${formData.name}`,
+            to: "codebug0527@gmail.com",
+          }),
+        });
+
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+          throw new Error(result.message || "Failed to send message");
+        }
+      }
+
+      toast({
+        title: "Message Sent",
+        description: "Thank you for reaching out. I'll get back to you soon!",
+      });
+      setFormData({ name: "", email: "", message: "" });
+    } catch (error: any) {
+      console.error("Error sending email:", error);
+      
+      let errorMessage = "Failed to send message. Please try again or contact me directly at codebug0527@gmail.com";
+      
+      if (error?.message) {
+        errorMessage = error.message;
+      }
+      
+      toast({
+        title: "Error",
+        description: errorMessage,
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const socialLinks = [
-    { icon: Mail, label: "Email", href: "mailto:merge.ninja@mynes.com" },
+    { icon: Mail, label: "Email", href: "mailto:codebug0527@gmail.com" },
     { icon: Github, label: "GitHub", href: "https://github.com/mergeninja0527" },
+    { icon: Send, label: "Telegram", href: "https://t.me/mergeninja0527" },
   ];
 
   return (
@@ -134,11 +209,12 @@ const ContactSection = () => {
 
             <motion.button
               type="submit"
-              className="font-body text-sm tracking-widest uppercase border border-primary-foreground px-12 py-4 hover:bg-primary-foreground hover:text-foreground transition-all duration-300 mt-8"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              disabled={isSubmitting}
+              className="font-body text-sm tracking-widest uppercase border border-primary-foreground px-12 py-4 hover:bg-primary-foreground hover:text-foreground transition-all duration-300 mt-8 disabled:opacity-50 disabled:cursor-not-allowed"
+              whileHover={!isSubmitting ? { scale: 1.02 } : {}}
+              whileTap={!isSubmitting ? { scale: 0.98 } : {}}
             >
-              Send Message
+              {isSubmitting ? "Sending..." : "Send Message"}
             </motion.button>
           </motion.form>
         </div>
