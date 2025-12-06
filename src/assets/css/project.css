@@ -1,0 +1,18 @@
+.show-all {
+    text-align: center;
+    padding: 50px 0px 0px 0px;
+}
+
+.show-all-button {
+    width: 300px;
+    height: 50px;
+    color: black;
+    background-color: white;
+    border: 1px solid black;
+    transition: 0.7s;
+}
+
+.show-all-button:hover {
+    background-color: black;
+    color: white;
+}
