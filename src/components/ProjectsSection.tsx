@@ -1,6 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
+import "../assets/css/project.css"
 
 const projects = [
   {
@@ -9,7 +10,6 @@ const projects = [
     category: "Full Stack",
     description: "A scalable e-commerce solution with payment gateway integration, inventory management, and real-time analytics.",
     tech: ["React", "Node.js", "PostgreSQL", "Stripe"],
-    year: "2024",
   },
   {
     id: 2,
@@ -17,7 +17,6 @@ const projects = [
     category: "Frontend / Bot",
     description: "High-performance dashboard for managing sneaker bots with real-time monitoring, task scheduling, and proxy management.",
     tech: ["Electron", "React", "Node.js", "Discord.js"],
-    year: "2023",
   },
   {
     id: 3,
@@ -25,7 +24,6 @@ const projects = [
     category: "Web3 / Full Stack",
     description: "Decentralized NFT platform with wallet integration, minting capabilities, and auction functionality.",
     tech: ["Next.js", "Solidity", "Web3.js", "IPFS"],
-    year: "2023",
   },
   {
     id: 4,
@@ -33,7 +31,76 @@ const projects = [
     category: "Mobile",
     description: "Cross-platform fitness application with workout tracking, nutrition logging, and social features.",
     tech: ["React Native", "Firebase", "Redux", "Node.js"],
-    year: "2022",
+  },
+  {
+    id: 5,
+    title: "Resume AI",
+    category: "Backend / AI",
+    description: "AI-powered resume screening system using NLP for skill matching and scoring.",
+    tech: ["Python", "Django", "PostgreSQL", "Tailwind CSS"],
+  },
+  {
+    id: 6,
+    title: "StockDesk",
+    category: "Full Stack",
+    description: "Real-time stock trading dashboard with automated bot strategies and charting.",
+    tech: ["React", "Node.js", "MongoDB", "WebSockets"],
+  },
+  {
+    id: 7,
+    title: "TicketFlow",
+    category: "Full Stack",
+    description: "Secure event ticketing platform with QR validation and payment support.",
+    tech: ["Laravel", "MySQL", "React", "Stripe"],
+  },
+  {
+    id: 8,
+    title: "SmartHome",
+    category: "Mobile",
+    description: "IoT home automation controller with voice commands and scheduling features.",
+    tech: ["Flutter", "Firebase", "Node.js", "MQTT"],
+  },
+  {
+    id: 9,
+    title: "CryptoTrack",
+    category: "Web3 / Full Stack",
+    description: "Wallet-connected crypto dashboard with analytics, history, and staking.",
+    tech: ["Next.js", "TypeScript", "Web3.js", "PostgreSQL"],
+  },
+  {
+    id: 10,
+    title: "Learnify",
+    category: "Full Stack",
+    description: "Online learning system with courses, quizzes, video modules, and certificates.",
+    tech: ["Vue", "PHP", "Laravel", "MySQL"],
+  },
+  {
+    id: 11,
+    title: "ChatWave",
+    category: "Mobile / Backend",
+    description: "Secure real-time chat app with end-to-end encryption and media sharing.",
+    tech: ["React Native", "Node.js", "WebSockets", "MongoDB"],
+  },
+  {
+    id: 12,
+    title: "VaultX",
+    category: "Desktop / Security",
+    description: "Encrypted password manager with offline mode, generator, and sync options.",
+    tech: ["Electron", "Golang", "SQLite", "React"],
+  },
+  {
+    id: 13,
+    title: "FitDash",
+    category: "Frontend / Data",
+    description: "Visual fitness dashboard with progress charts, stats, and goal tracking.",
+    tech: ["Angular", "TypeScript", "Node.js", "MongoDB"],
+  },
+  {
+    id: 14,
+    title: "Customizer 3D",
+    category: "Frontend / eCommerce",
+    description: "3D product customizer with pricing logic and checkout integration.",
+    tech: ["React", "Three.js", "Node.js", "Stripe"],
   },
 ];
 
@@ -89,16 +156,14 @@ const ProjectsSection = () => {
                 <div className="flex items-start justify-between mb-8">
                   <div>
                     <span
-                      className={`font-body text-xs tracking-widest uppercase transition-colors duration-300 ${
-                        hoveredId === project.id ? "text-primary-foreground/60" : "text-muted-foreground"
-                      }`}
+                      className={`font-body text-xs tracking-widest uppercase transition-colors duration-300 ${hoveredId === project.id ? "text-primary-foreground/60" : "text-muted-foreground"
+                        }`}
                     >
                       {project.category}
                     </span>
                     <h3
-                      className={`font-display text-4xl md:text-5xl mt-2 transition-colors duration-300 ${
-                        hoveredId === project.id ? "text-primary-foreground" : "text-foreground"
-                      }`}
+                      className={`font-display text-4xl md:text-5xl mt-2 transition-colors duration-300 ${hoveredId === project.id ? "text-primary-foreground" : "text-foreground"
+                        }`}
                     >
                       {project.title}
                     </h3>
@@ -112,18 +177,16 @@ const ProjectsSection = () => {
                     transition={{ duration: 0.3 }}
                   >
                     <ArrowUpRight
-                      className={`w-8 h-8 transition-colors duration-300 ${
-                        hoveredId === project.id ? "text-primary-foreground" : "text-foreground"
-                      }`}
+                      className={`w-8 h-8 transition-colors duration-300 ${hoveredId === project.id ? "text-primary-foreground" : "text-foreground"
+                        }`}
                     />
                   </motion.div>
                 </div>
 
                 {/* Description */}
                 <p
-                  className={`font-body text-sm leading-relaxed mb-8 transition-colors duration-300 ${
-                    hoveredId === project.id ? "text-primary-foreground/80" : "text-muted-foreground"
-                  }`}
+                  className={`font-body text-sm leading-relaxed mb-8 transition-colors duration-300 ${hoveredId === project.id ? "text-primary-foreground/80" : "text-muted-foreground"
+                    }`}
                 >
                   {project.description}
                 </p>
@@ -134,27 +197,29 @@ const ProjectsSection = () => {
                     {project.tech.map((t) => (
                       <span
                         key={t}
-                        className={`font-body text-xs px-3 py-1 border transition-colors duration-300 ${
-                          hoveredId === project.id
-                            ? "border-primary-foreground/30 text-primary-foreground"
-                            : "border-border text-foreground"
-                        }`}
+                        className={`font-body text-xs px-3 py-1 border transition-colors duration-300 ${hoveredId === project.id
+                          ? "border-primary-foreground/30 text-primary-foreground"
+                          : "border-border text-foreground"
+                          }`}
                       >
                         {t}
                       </span>
                     ))}
                   </div>
                   <span
-                    className={`font-display text-2xl transition-colors duration-300 ${
-                      hoveredId === project.id ? "text-primary-foreground" : "text-foreground"
-                    }`}
+                    className={`font-display text-2xl transition-colors duration-300 ${hoveredId === project.id ? "text-primary-foreground" : "text-foreground"
+                      }`}
                   >
-                    {project.year}
                   </span>
                 </div>
               </div>
             </motion.div>
           ))}
+        </div>
+        <div className="show-all">
+          <button className="show-all-button">
+            Show All
+          </button>
         </div>
       </div>
     </section>
