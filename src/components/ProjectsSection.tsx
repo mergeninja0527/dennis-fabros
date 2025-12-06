@@ -9,7 +9,6 @@ const projects = [
     category: "Full Stack",
     description: "A scalable e-commerce solution with payment gateway integration, inventory management, and real-time analytics.",
     tech: ["React", "Node.js", "PostgreSQL", "Stripe"],
-    year: "2024",
   },
   {
     id: 2,
@@ -17,7 +16,6 @@ const projects = [
     category: "Frontend / Bot",
     description: "High-performance dashboard for managing sneaker bots with real-time monitoring, task scheduling, and proxy management.",
     tech: ["Electron", "React", "Node.js", "Discord.js"],
-    year: "2023",
   },
   {
     id: 3,
@@ -25,7 +23,6 @@ const projects = [
     category: "Web3 / Full Stack",
     description: "Decentralized NFT platform with wallet integration, minting capabilities, and auction functionality.",
     tech: ["Next.js", "Solidity", "Web3.js", "IPFS"],
-    year: "2023",
   },
   {
     id: 4,
@@ -33,7 +30,6 @@ const projects = [
     category: "Mobile",
     description: "Cross-platform fitness application with workout tracking, nutrition logging, and social features.",
     tech: ["React Native", "Firebase", "Redux", "Node.js"],
-    year: "2022",
   },
 ];
 
@@ -149,7 +145,6 @@ const ProjectsSection = () => {
                       hoveredId === project.id ? "text-primary-foreground" : "text-foreground"
                     }`}
                   >
-                    {project.year}
                   </span>
                 </div>
               </div>
