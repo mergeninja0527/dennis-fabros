@@ -54,7 +54,7 @@ const AboutSection = () => {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.4 }}
             >
-              Seasoned Full Stack Developer with 7+ years of hands-on experience in website UI/UX, 
+              Seasoned Full Stack Developer with 8+ years of hands-on experience in website UI/UX, 
               Sneaker bot Dashboard/Module development, Discord bots, NFT platforms, and Mobile app 
               development. I leverage broad development experience and technical expertise to deliver 
               exceptional solutions.
