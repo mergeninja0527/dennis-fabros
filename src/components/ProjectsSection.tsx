@@ -109,7 +109,7 @@ const ProjectsSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [hoveredId, setHoveredId] = useState<number | null>(null);
-  const [activeView, setActiveView] = useState<'menu' | 'paragraph' | null>(null);
+  const [activeView, setActiveView] = useState<'menu' | 'paragraph' | null>('menu');
   const [hoveredButton, setHoveredButton] = useState<'menu' | 'paragraph' | null>(null);
 
   return (
@@ -166,7 +166,7 @@ const ProjectsSection = () => {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className={`grid gap-8 ${activeView === 'menu' ? 'md:grid-cols-2' : 'md:grid-cols-1'}`}>
           {projects.map((project, index) => (
             <motion.div
               key={project.id}

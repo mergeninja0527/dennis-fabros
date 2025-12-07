@@ -18,7 +18,7 @@
     align-items: center;
     gap: 10px;
     font-size: 20px;
-    transition: 0.7s;
+    transition: 0.7s !important;
 }
 
 .sort-btn-group {
