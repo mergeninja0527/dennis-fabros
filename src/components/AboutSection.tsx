@@ -3,10 +3,10 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 
 const skills = {
-  backend: ["PHP", "Python", "Node", "Golang", "Laravel", "Django", "Flask", "C++", "C#"],
-  frontend: ["React", "Angular", "Vue", "Next.js", "TypeScript", "Tailwind CSS", "Electron"],
-  mobile: ["React Native", "Flutter", "Swift", "Kotlin"],
-  database: ["PostgreSQL", "MongoDB", "MySQL", "MSSQL"],
+  backend: ["PHP", "Python", "Node", "Golang", "Laravel", "Django", "Flask", "C++", "C#", "ASP.NET", ".NET Core", "Magento Backend", "AWS Lambda", "REST/GraphQL API"],
+  frontend: ["React", "Angular", "Vue", "Next.js", "TypeScript", "Tailwind CSS", "Electron", "React Native", "Webflow", "Nuxt.js", "CI/CD"],
+  mobile: ["React Native", "Flutter", "Swift", "Kotlin", "Firebase", "Native Android(Java)"],
+  database: ["PostgreSQL", "MongoDB", "MySQL", "MSSQL", "AWS DynamoDB"],
 };
 
 const AboutSection = () => {
