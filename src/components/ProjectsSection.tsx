@@ -111,6 +111,20 @@ const ProjectsSection = () => {
   const [hoveredId, setHoveredId] = useState<number | null>(null);
   const [activeView, setActiveView] = useState<'menu' | 'paragraph' | null>('menu');
   const [hoveredButton, setHoveredButton] = useState<'menu' | 'paragraph' | null>(null);
+  const [searchQuery, setSearchQuery] = useState<string>('');
+
+  // Filter projects based on search query (title and tech)
+  const filteredProjects = projects.filter((project) => {
+    const query = searchQuery.toLowerCase().trim();
+    if (!query) return true;
+    
+    const titleMatch = project.title.toLowerCase().includes(query);
+    const techMatch = project.tech.some((tech) => 
+      tech.toLowerCase().includes(query)
+    );
+    
+    return titleMatch || techMatch;
+  });
 
   return (
     <section id="projects" className="py-32 bg-background relative">
@@ -136,7 +150,12 @@ const ProjectsSection = () => {
         <div className="sort-method">
           <div className="seaerch-box">
             <Icon className="search-icon" icon="uil:search" />
-            <input type="text" />
+            <input 
+              type="text" 
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search projects..."
+            />
           </div>
           <div className="sort-btn-group">
             <button 
@@ -167,7 +186,7 @@ const ProjectsSection = () => {
         </div>
 
         <div className={`grid gap-8 ${activeView === 'menu' ? 'md:grid-cols-2' : 'md:grid-cols-1'}`}>
-          {projects.map((project, index) => (
+          {filteredProjects.map((project, index) => (
             <motion.div
               key={project.id}
               className="group relative border border-border p-8 md:p-12 cursor-pointer overflow-hidden"
