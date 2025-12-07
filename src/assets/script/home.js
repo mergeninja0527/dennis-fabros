@@ -1,5 +1,5 @@
-$('.full-landing-image').ripples({
-    resolution: 512,
-    dropRadius: 20,
-    perturbance: 0.04,
-});
+// $('.full-landing-image').ripples({
+//     resolution: 112,
+//     dropRadius: 5,
+//     perturbance: 0.04,
+// });

@@ -109,6 +109,8 @@ const ProjectsSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [hoveredId, setHoveredId] = useState<number | null>(null);
+  const [activeView, setActiveView] = useState<'menu' | 'paragraph' | null>(null);
+  const [hoveredButton, setHoveredButton] = useState<'menu' | 'paragraph' | null>(null);
 
   return (
     <section id="projects" className="py-32 bg-background relative">
@@ -137,8 +139,30 @@ const ProjectsSection = () => {
             <input type="text" />
           </div>
           <div className="sort-btn-group">
-            <button className="sort-btn"><Icon icon="subway:menu" /></button>
-            <button className="sort-btn"><Icon icon="subway:paragraph" /></button>
+            <button 
+              className="sort-btn sort-btn-menu"
+              onClick={() => setActiveView('menu')}
+              onMouseEnter={() => setHoveredButton('menu')}
+              onMouseLeave={() => setHoveredButton(null)}
+              style={{ 
+                borderBottom: activeView === 'menu' ? '1px solid black' : 'none',
+                cursor: 'pointer'
+              }}
+            >
+              <Icon icon="subway:menu" />
+            </button>
+            <button 
+              className="sort-btn sort-btn-paragraph"
+              onClick={() => setActiveView('paragraph')}
+              onMouseEnter={() => setHoveredButton('paragraph')}
+              onMouseLeave={() => setHoveredButton(null)}
+              style={{ 
+                borderBottom: activeView === 'paragraph' ? '1px solid black' : 'none',
+                cursor: 'pointer'
+              }}
+            >
+              <Icon icon="subway:paragraph" />
+            </button>
           </div>
         </div>
 
