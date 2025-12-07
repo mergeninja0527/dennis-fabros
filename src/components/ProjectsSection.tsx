@@ -1,104 +1,105 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
+import { Icon } from "@iconify/react";
 import "../assets/css/project.css"
 
 const projects = [
   {
     id: 1,
     title: "E-Commerce Platform",
-    category: "Full Stack",
+    category: "Full Stack Web",
     description: "A scalable e-commerce solution with payment gateway integration, inventory management, and real-time analytics.",
     tech: ["React", "Node.js", "PostgreSQL", "Stripe"],
   },
   {
     id: 2,
     title: "Sneaker Bot Dashboard",
-    category: "Frontend / Bot",
+    category: "Bots & Automation",
     description: "High-performance dashboard for managing sneaker bots with real-time monitoring, task scheduling, and proxy management.",
     tech: ["Electron", "React", "Node.js", "Discord.js"],
   },
   {
     id: 3,
     title: "NFT Marketplace",
-    category: "Web3 / Full Stack",
+    category: "Web3 / Blockchain",
     description: "Decentralized NFT platform with wallet integration, minting capabilities, and auction functionality.",
     tech: ["Next.js", "Solidity", "Web3.js", "IPFS"],
   },
   {
     id: 4,
     title: "Mobile Fitness App",
-    category: "Mobile",
+    category: "Mobile Apps",
     description: "Cross-platform fitness application with workout tracking, nutrition logging, and social features.",
     tech: ["React Native", "Firebase", "Redux", "Node.js"],
   },
   {
     id: 5,
     title: "Resume AI",
-    category: "Backend / AI",
+    category: "AI / Machine Learning",
     description: "AI-powered resume screening system using NLP for skill matching and scoring.",
     tech: ["Python", "Django", "PostgreSQL", "Tailwind CSS"],
   },
   {
     id: 6,
     title: "StockDesk",
-    category: "Full Stack",
+    category: "Full Stack Web",
     description: "Real-time stock trading dashboard with automated bot strategies and charting.",
     tech: ["React", "Node.js", "MongoDB", "WebSockets"],
   },
   {
     id: 7,
     title: "TicketFlow",
-    category: "Full Stack",
+    category: "Full Stack Web",
     description: "Secure event ticketing platform with QR validation and payment support.",
     tech: ["Laravel", "MySQL", "React", "Stripe"],
   },
   {
     id: 8,
     title: "SmartHome",
-    category: "Mobile",
+    category: "IoT / Hardware",
     description: "IoT home automation controller with voice commands and scheduling features.",
     tech: ["Flutter", "Firebase", "Node.js", "MQTT"],
   },
   {
     id: 9,
     title: "CryptoTrack",
-    category: "Web3 / Full Stack",
+    category: "Web3 / Blockchain",
     description: "Wallet-connected crypto dashboard with analytics, history, and staking.",
     tech: ["Next.js", "TypeScript", "Web3.js", "PostgreSQL"],
   },
   {
     id: 10,
     title: "Learnify",
-    category: "Full Stack",
+    category: "Full Stack Web",
     description: "Online learning system with courses, quizzes, video modules, and certificates.",
     tech: ["Vue", "PHP", "Laravel", "MySQL"],
   },
   {
     id: 11,
     title: "ChatWave",
-    category: "Mobile / Backend",
+    category: "Mobile Apps",
     description: "Secure real-time chat app with end-to-end encryption and media sharing.",
     tech: ["React Native", "Node.js", "WebSockets", "MongoDB"],
   },
   {
     id: 12,
     title: "VaultX",
-    category: "Desktop / Security",
+    category: "Desktop Software",
     description: "Encrypted password manager with offline mode, generator, and sync options.",
     tech: ["Electron", "Golang", "SQLite", "React"],
   },
   {
     id: 13,
     title: "FitDash",
-    category: "Frontend / Data",
+    category: "Data & Visualization",
     description: "Visual fitness dashboard with progress charts, stats, and goal tracking.",
     tech: ["Angular", "TypeScript", "Node.js", "MongoDB"],
   },
   {
     id: 14,
     title: "Customizer 3D",
-    category: "Frontend / eCommerce",
+    category: "E-Commerce",
     description: "3D product customizer with pricing logic and checkout integration.",
     tech: ["React", "Three.js", "Node.js", "Stripe"],
   },
@@ -130,6 +131,16 @@ const ProjectsSection = () => {
             A curated selection of projects showcasing technical expertise and creative solutions
           </p>
         </motion.div>
+        <div className="sort-method">
+          <div className="seaerch-box">
+            <Icon className="search-icon" icon="uil:search" />
+            <input type="text" />
+          </div>
+          <div className="sort-btn-group">
+            <button className="sort-btn"><Icon icon="subway:menu" /></button>
+            <button className="sort-btn"><Icon icon="subway:paragraph" /></button>
+          </div>
+        </div>
 
         <div className="grid md:grid-cols-2 gap-8">
           {projects.map((project, index) => (
@@ -215,11 +226,6 @@ const ProjectsSection = () => {
               </div>
             </motion.div>
           ))}
-        </div>
-        <div className="show-all">
-          <button className="show-all-button">
-            Show All
-          </button>
         </div>
       </div>
     </section>
