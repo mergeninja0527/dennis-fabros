@@ -27,7 +27,7 @@ const experiences = [
     technologies: ["React", "React Native", "Redux", "AWS Lambda", "DynamoDB", "Storybook"],
   },
   {
-    period: "03/2018 - Present",
+    period: "03/2018 - 10/2018",
     company: "Freelance",
     role: "Full Stack Developer (Remote)",
     description:
